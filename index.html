@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body onload="" style="margin:0">
+    <form action="get" onsubmit="return false;" style="margin:1em">
+      <input type="text" id="input">
+      <select id="scale">
+        <option value="1">1x</option>
+        <option value="2">2x</option>
+        <option value="4">4x</option>
+        <option value="8">8x</option>
+      </select>
+      <input type="checkbox" checked id="shadow" name="shadow"> <label for="shadow">Shadow</label>
+    </form>
+    <canvas height="512" style="height:512; width:512; background-color:#FF00FF" id="canvasId"></canvas>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/pxxl.js/dist/pxxl.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

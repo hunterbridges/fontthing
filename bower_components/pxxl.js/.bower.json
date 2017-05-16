@@ -1,0 +1,15 @@
+{
+  "name": "pxxl.js",
+  "main": "dist/pxxl.js",
+  "homepage": "https://github.com/remcoder/Pxxl.js",
+  "_release": "0859e1cc2e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0859e1cc2ec67bb29acbaea62265060a2b99a0df"
+  },
+  "_source": "https://github.com/remcoder/Pxxl.js.git",
+  "_target": "*",
+  "_originalSource": "pxxl",
+  "_direct": true
+}
