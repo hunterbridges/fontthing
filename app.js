@@ -30,7 +30,7 @@ $(document).ready(function() {
             x = scale + pixel.x * scale,
             y = scale + pixel.y * scale;
 
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#484868";
             ctx.fillRect(x,y + scale,scale,scale);
             ctx.fillRect(x + scale,y,scale,scale);
             ctx.fillRect(x + scale,y + scale,scale,scale);
@@ -42,7 +42,7 @@ $(document).ready(function() {
           x = scale + pixel.x * scale,
           y = scale + pixel.y * scale;
 
-          ctx.fillStyle = "white";
+          ctx.fillStyle = "#F0F0F0";
           ctx.fillRect(x,y,scale,scale);
         }
       });
