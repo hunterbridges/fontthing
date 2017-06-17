@@ -15,36 +15,53 @@ $(document).ready(function() {
   var $input = $("#input");
   var $scale = $("#scale");
   var $shadow = $("#shadow");
+  var $space = $("#space");
   $("input, select").bind('keyup change', function(e) {
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    pxxl("mplus_j12b_utf8-12.bdf", $input.val(), function (pixels) {
-        var ctx = context;
+    var shadow = $shadow.prop("checked");
+    var space = $space.prop("checked");
 
-        var scale = parseInt($scale.val(), 10);
+    Pxxl.LoadFont("mplus_j12b_utf8-12.bdf", function(font) {
+      var text = $input.val();
 
-        if ($shadow.prop("checked")) {
-          for (var p=0,hue=0 ; p<pixels.length ; p++,hue++) {
-            var pixel = pixels[p],
-            x = scale + pixel.x * scale,
-            y = scale + pixel.y * scale;
+      if (space) {
+        font.FONTBOUNDINGBOX[0] += 2;
+      }
 
-            ctx.fillStyle = "#484868";
-            ctx.fillRect(x,y + scale,scale,scale);
-            ctx.fillRect(x + scale,y,scale,scale);
-            ctx.fillRect(x + scale,y + scale,scale,scale);
-          }
-        }
+      var pixels = font.getPixels(text);
 
+      if (space) {
+        font.FONTBOUNDINGBOX[0] -= 2;
+      }
+
+      var ctx = context;
+
+      var scale = parseInt($scale.val(), 10);
+
+      if (shadow) {
         for (var p=0,hue=0 ; p<pixels.length ; p++,hue++) {
           var pixel = pixels[p],
           x = scale + pixel.x * scale,
           y = scale + pixel.y * scale;
 
-          ctx.fillStyle = "#F0F0F0";
-          ctx.fillRect(x,y,scale,scale);
+          ctx.fillStyle = "#484868";
+          ctx.fillRect(x,y + scale,scale,scale);
+          ctx.fillRect(x + scale,y,scale,scale);
+          ctx.fillRect(x + scale,y + scale,scale,scale);
         }
-      });
+      }
+
+      for (var p=0,hue=0 ; p<pixels.length ; p++,hue++) {
+        var pixel = pixels[p],
+        x = scale + pixel.x * scale,
+        y = scale + pixel.y * scale;
+
+        ctx.fillStyle = "#F0F0F0";
+        ctx.fillRect(x,y,scale,scale);
+      }
+
+    });
   });
 });
